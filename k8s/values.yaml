@@ -1,0 +1,6 @@
+replicaCount: 1
+
+image:
+  repository: kafka-listener
+  tag: latest
+  pullPolicy: IfNotPresent

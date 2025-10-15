@@ -1,0 +1,14 @@
+kafka-python==2.0.2
+clickhouse-connect==0.9.1
+clickhouse-driver==0.2.9
+SQLAlchemy==2.0.43
+psycopg2-binary==2.9.10
+confluent-kafka==2.11.1
+attrs==25.3.0
+orjson==3.11.3
+httpx==0.28.1
+cachetools==6.2.0
+Authlib==1.6.5
+avro==1.12.0
+fastavro==1.12.0
+urllib3==2.5.0

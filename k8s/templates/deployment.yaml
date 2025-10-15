@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-listener-{{ regexReplaceAll "[^a-z0-9-]+" (.Values.topicPattern | lower) "-" | trimSuffix "-" }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: kafka-listener-{{ regexReplaceAll "[^a-z0-9-]+" (.Values.topicPattern | lower) "-" | trimSuffix "-" }}
+  template:
+    metadata:
+      labels:
+        app: kafka-listener-{{ regexReplaceAll "[^a-z0-9-]+" (.Values.topicPattern | lower) "-" | trimSuffix "-" }}
+    spec:
+      containers:
+        - name: kafka-listener
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: kafka-listener-env
+          env:
+            - name: KAFKA_TOPIC_PATTERN
+              value: "{{ required "You must set --set topicPattern=<pattern>" .Values.topicPattern }}"
