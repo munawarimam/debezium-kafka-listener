@@ -275,9 +275,9 @@ class ClickHouseLogger(logging.Handler):
         logger = logging.getLogger("KafkaConsumer")
         logger.setLevel(log_level)
 
-        # file_handler = TimedRotatingFileHandler("consumer.log", when="midnight", interval=1, backupCount=7)
-        # file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
-        # logger.addHandler(file_handler)
+        file_handler = TimedRotatingFileHandler("consumer.log", when="midnight", interval=1, backupCount=7)
+        file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+        logger.addHandler(file_handler)
 
         ch_handler = cls(connector, table)
         ch_handler.setLevel(log_level)
