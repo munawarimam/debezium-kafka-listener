@@ -3,13 +3,13 @@
 ### QUICK START
 ```
 Build docker image
-`docker build -t kafka-listener:latest .`
+$ docker build -t kafka-listener:latest .
 
 Make sure the image have been built
-`docker image ls`
+$ docker image ls
 
 You should find the image 
-`kafka-listener`
+$ kafka-listener
 ```
 
 
